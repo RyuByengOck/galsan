@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../galsan.css';
+import '../css/galsan.css';
 
 class Join extends Component {
 
