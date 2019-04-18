@@ -3,18 +3,31 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { Login, Join, Main } from './pages';
 
 class App extends Component {
+
+  state = { username: null };
+
+  componentDidMount() {
+      fetch('/api/getUsername')
+          .then(res => res.json())
+          .then(user => this.setState({ username: user.username }));
+  }
+
+
   render() {
+    const { username } = this.state;
     return (
-      <Fragment>
-        <Router exact path="/" component={Login} />
-        <Router exact path="/Join" component={Join} />
-        <Router exact path="/Main" component={Main} />
-        <div>
-          파일 정리좀 했으~~ ㅋㅋㅋ npm 버전도 맞춰 놨으~
-          노드 연동은 아직 ; ㅎㅎㅎ 회사일 바빠서~ 4월 말까지 CRUD 동작할 수 있게 여기다가 붙여놓을께 
-        </div>
-      </Fragment>
-    )
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Welcome to React</h1>
+        </header>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
+        </p>
+          <div>
+              {username ? <h1>{`Hello ${username}`}</h1> : <h1>Loading.. please wait!</h1>}
+          </div>
+      </div>
+    );
   }
 }
 
