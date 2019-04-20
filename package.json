@@ -13,6 +13,7 @@
     "babel-preset-react-app": "^7.0.2",
     "bfj": "6.1.1",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
+    "concurrently": "^4.1.0",
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
@@ -33,7 +34,9 @@
     "jest-resolve": "23.6.0",
     "jest-watch-typeahead": "^0.2.1",
     "mini-css-extract-plugin": "0.5.0",
+    "morgan": "^1.9.1",
     "mysql": "^2.17.0",
+    "nodemon": "^1.18.11",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.2.1",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -59,7 +62,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "server": "nodemon server/server.js",
+    "dev": "concurrently \"npm server\" \"npm start\"",
+    "test": "node scripts/test.js --env=jsdom"
   },
   "eslintConfig": {
     "extends": "react-app"
