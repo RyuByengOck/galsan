@@ -21,8 +21,10 @@ class Login extends Component {
     }
 
     handlerCheck = () => {
-        if (this.state.id === "galsan" && this.state.pass === '1111')
+        if (this.state.id === "galsan" && this.state.pass === '1111') {
             alert('어서오세요!');
+            this.props.history.push('/Home');
+        }
         else {
             alert('ID, PassWord 를 다시 확인해 주세요');
         }
@@ -41,9 +43,7 @@ class Login extends Component {
                         <input type="password" onChange={this.handlerPassChange}></input>
                     </div>
                     <br />
-                    <button className="mR10" onClick={() => {
-                        this.props.history.push('/Home');
-                    }}>Login</button>
+                    <button className="mR10" onClick={this.handlerCheck}>Login</button>
                     <button className="mL10" onClick={() => {
                         this.props.history.push('/Join');
                     }}>Join</button>
